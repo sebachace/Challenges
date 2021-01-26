@@ -186,6 +186,20 @@ for index in 1:length(ready)
     end
 end
 
+function split_and_join(lines)
+  out = String[]
+  tmp = String[]
+  for line in lines
+    if !isempty(line)
+      push!(tmp, line)
+    else
+      push!(out, join(tmp, " "))
+      empty!(tmp)
+    end
+  end
+  return out
+end
+
 function readinput(filename)
   return [
     Dict(
